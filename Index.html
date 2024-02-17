@@ -13,23 +13,41 @@
         }
         textarea {
             width: 100%;
-            height: 100vh;
+            height: 80vh;
             resize: none;
             border: none;
             font-size: 16px;
+            padding: 10px;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
             padding: 10px;
         }
     </style>
 </head>
 <body>
     <textarea id="codeInput" placeholder="Insert your HTML code here..."></textarea>
-    <button onclick="displayCodeOutput()">Go</button>
+    <button onclick="displayCodeOutput()">Run</button>
     <div id="output"></div>
 
     <script>
         function displayCodeOutput() {
             const code = document.getElementById('codeInput').value;
             document.getElementById('output').innerHTML = code;
+            document.getElementById('codeInput').style.display = 'none'; // Hide input area
+            document.getElementById('output').style.display = 'block'; // Show output area
+            document.querySelector('button').style.display = 'none'; // Hide the "Run" button
+            eval(code); // Execute the inserted code
         }
     </script>
 </body>
